@@ -1,27 +1,29 @@
-## subimos o servico para uma imagem docker
+### Apos clonar o arquivo yml
+
+### Subimos o servico para uma imagem docker
 
 docker-compose up -d
 
-## valide se as imagens foram criadas corretamente 
+### Valide se as imagens foram criadas corretamente 
 
 docker images list
 
-## logar na imagem criada
+### Logar na imagem criada
 
 docker exec -it kafka-kafka-3-1 bash
 
-## apos logar na imagem -- criar o topico
+### Apos logar na imagem, criar o topico
 
 kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 3 --partitions 3 --topic topico1
 
-##listar o topico criado
+### Listar o topico criado
 
 kafka-topics --list --bootstrap-server localhost:29092
 
-## criar um producer que ira enviar mensagens para o topico criado
+### Criar um producer que ira enviar mensagens para o topico criado
 
 kafka-console-producer --broker-list localhost:29092 --topic topico1
 
-## em outro terminar criaremos o consumer
+### E em outro terminar criaremos o consumer(pra visualizar as mensagens)
 
 kafka-console-consumer --bootstrap-server localhost:29092 --topic topico1
